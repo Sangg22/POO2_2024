@@ -8,3 +8,10 @@ El proyecto consiste en un sistema de gestión de reservas diseñado para hotele
 5. Cliente: La clase cliente almacenará los datos del cliente con el que estemos tratando el cual tendrá su nombre y su correo y al igual tendrá un vector de reservas por el hecho de que podrá tener más de una reserva agregando si se solicita al vector.
 ## Consideraciones
 Por el momento la idea del proyecto es un poco simple y sin embargo a futuro se podrán ir agregando nuevas características al proyecto, como lo serían más tipos de habitaciones y al igual la manera de generar facturas dependiendo del gasto.
+## Casos en los que puede fallar:
+El código podria fallar al momento de dar datos que no sean válidos o que no pertenezcan al tipo de dato que se requiere.
+# Avance 1
+En el primer avance del proyecto lo primero que hice fue crear dos clases como instancia, siendo una clase la padre y la otra la hija.
+En este caso la clase Habitación es la padre y por lo tanto la otra clase es la hija la cual es la clase Suite, la Clase suite lo que hace es heredar todos los atributos que tiene la clase habitación y agregando un precio extra en la clase Suite.
+Inclui las dos clases en un solo código con nombre Habitacion.h y lo inclui en el main para poder mostar ejemplos.
+Por el momento luce muy sencillo, sin embargo, ya con los siguiente avances se van a ir agregando las otra clases y mejorando las que ya están hechas.
