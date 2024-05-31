@@ -1,3 +1,5 @@
+#ifndef HABITACION_H_
+#define HABITACION_H_
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
@@ -8,7 +10,7 @@ using namespace std;
 //Clase padre (Habitacion)
 class Habitacion{
     //Atributos
-    private:
+    protected:
         int numero;
         string tipo;
         int capacidad;
@@ -31,9 +33,9 @@ class Habitacion{
         int getCapacidad();
         double getPrecio_base();
         bool getDisponibilidad();
-        //Calcular precio total e imprimir datos
-        double calculaPrecioTotal();
-        void imprimeDatos();
+        //Calcular precio total e imprimir datos y polimorfismo
+        virtual double calculaPrecioTotal() = 0;
+        virtual void imprimeDatos() = 0;
 };
 
 //Inicializar valores
@@ -110,55 +112,4 @@ void Habitacion::imprimeDatos(){
     cout << "Disponibilidad: " << (disponibilidad ? "Disponible" : "No Disponible") << endl;
 }
 
-//Clase hija (Suite) de la clase padre (Habitacion)
-class Suite : public Habitacion{
-    //Atributos
-    private:
-        double precio_extra;
-    //Metodos    
-    public:
-        //Constructores
-        Suite();
-        Suite(int num, string tip, int cap, double prec, bool disp, double extra);
-
-        //Setters
-        void setPrecioExtra(double);
-        //Getters
-        double getPrecioExtra();
-
-        //funcion de calcular precio e imprimir datos
-        double calculaPrecioTotal();
-        void imprimeDatos();
-};
-
-//Inicializar valores en constructor vacio
-Suite::Suite() : Habitacion(){
-    precio_extra = 0;
-}
-
-//Establecer parametros de la clase hija al igual que los de la padre
-Suite::Suite(int num, string tip, int cap, double prec, bool disp, double extra) : Habitacion(num, tip, cap, prec, disp){
-    precio_extra = extra;
-}
-
-//Setters
-void Suite::setPrecioExtra(double extra){
-    precio_extra  = extra;
-}
-
-//Getters
-double Suite::getPrecioExtra(){
-    return precio_extra;
-}
-
-//Modificar función en la que ahora se hará una suma para saber el precio total
-double Suite::calculaPrecioTotal(){
-    return getPrecio_base() + precio_extra;
-}
-
-//Imprimir Datos
-void Suite::imprimeDatos(){
-    Habitacion::imprimeDatos();
-    cout << "Precio extra por ser suite: " <<precio_extra << endl;
-    cout << "Precio total: " << calculaPrecioTotal() << endl;
-}
+#endif
