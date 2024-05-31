@@ -15,3 +15,8 @@ En el primer avance del proyecto lo primero que hice fue crear dos clases como i
 En este caso la clase Habitación es la padre y por lo tanto la otra clase es la hija la cual es la clase Suite, la Clase suite lo que hace es heredar todos los atributos que tiene la clase habitación y agregando un precio extra en la clase Suite.
 Inclui las dos clases en un solo código con nombre Habitacion.h y lo inclui en el main para poder mostar ejemplos.
 Por el momento luce muy sencillo, sin embargo, ya con los siguiente avances se van a ir agregando las otra clases y mejorando las que ya están hechas.
+# Avance 2
+En este segundo avance se crearon 3 clase más, las cuales serian la clase Estandar, Cliente y Reserva.
+En la clase Cliente se recibiran los datos del cliente que se quiere hospedar el cual tendrá un vector en el que podrá tener más de una reserva si asi lo quiere, en la clase Reserva se recibe el dia de inicio de la reserva y el final, se planea incluir también la habitación en un futuro.
+La clase estandar al igual que la clase suite llega a ser una clase hija de la clase Habitación, en este punto se uso "virtual" en las funciones de la clase Padre y de esta manera implementar plimorfismo, ya incluyendo "override" en las clases hija.
+Se planea seguir mejorando el código y faltaría implementar una clase más a futuro.
