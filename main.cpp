@@ -6,8 +6,8 @@
 
 int main() {
     //Establecer valores a la habitación estandar y la suite
-    Estandar habitacion1(101, "Estandar", 4, 150.0, true);
-    Suite habitacion2(102, "Suite", 4, 250.0, true, 100.0);
+    Habitacion* habitacion1 = new Estandar(101, "Estandar", 4, 150.0, true);
+    Habitacion* habitacion2 = new Suite(102, "Suite", 4, 250.0, true, 100.0);
 
     //Establecer valores al cliente y crear dos reservas para agregar
     Cliente cliente1("Santiago Gonzalez", "santiglz79@gmail.com");
@@ -21,8 +21,8 @@ int main() {
     //Imprimir información del cliente
     cliente1.imprimirDatos();
     //Imprimir habitaciones
-    habitacion1.imprimeDatos();
-    habitacion2.imprimeDatos();
+    habitacion1->imprimeDatos();
+    habitacion2->imprimeDatos();
 
     return 0;
 }
