@@ -3,16 +3,23 @@
 #include "Reserva.h"
 #include "Cliente.h"
 #include "Estandar.h"
+#include "Hotel.h"
 
 int main() {
     //Establecer valores a la habitación estandar y la suite
     Habitacion* habitacion1 = new Estandar(101, "Estandar", 4, 150.0, true);
-    Habitacion* habitacion2 = new Suite(102, "Suite", 4, 250.0, true, 100.0);
+    Habitacion* habitacion2 = new Suite(101, "Suite", 4, 150.0, true, 100.0);
+
+    Hotel hotel1("Paradise", "Ixtapa");
+
+    hotel1.agregaHabitacion(habitacion1);
+    hotel1.agregaHabitacion(habitacion2);
+
 
     //Establecer valores al cliente y crear dos reservas para agregar
     Cliente cliente1("Santiago Gonzalez", "santiglz79@gmail.com");
-    Reserva reserva1("2024-06-01", "2024-06-10");
-    Reserva reserva2("2024-07-10", "2024-07-19");
+    Reserva reserva1(10);
+    Reserva reserva2(2);
 
     //Agregar reservas
     cliente1.agregarReserva(reserva1);
@@ -21,8 +28,8 @@ int main() {
     //Imprimir información del cliente
     cliente1.imprimirDatos();
     //Imprimir habitaciones
-    habitacion1->imprimeDatos();
-    habitacion2->imprimeDatos();
+    
+    hotel1.imprimirDatos();
 
     return 0;
 }
