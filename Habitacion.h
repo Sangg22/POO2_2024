@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <string>
 
+#include "Reserva.h"
+
 using namespace std;
 
 //Clase padre (Habitacion)
@@ -14,27 +16,28 @@ class Habitacion{
         int numero;
         string tipo;
         int capacidad;
-        double precio_base;
+        int precio_base;
         bool disponibilidad;
+        bool ocupada;
     //Metodos
     public:
         //Constructores
         Habitacion();
-        Habitacion(int num, string tip, int cap, double prec, bool disp);
+        Habitacion(int num, string tip, int cap, int prec, bool disp);
         //Setters
         void setNumero(int);
         void setTipo(string);
         void setCapacidad(int);
-        void setPrecio_base(double);
+        void setPrecio_base(int);
         void setDisponibilidad(bool);
         //Getters
         int getNumero();
         string getTipo();
         int getCapacidad();
-        double getPrecio_base();
+        int getPrecio_base();
         bool getDisponibilidad();
         //Calcular precio total e imprimir datos y polimorfismo
-        virtual double calculaPrecioTotal() = 0;
+        virtual int calculaPrecioTotal(int dias) = 0;
         virtual void imprimeDatos() = 0;
 };
 
@@ -45,20 +48,24 @@ Habitacion::Habitacion(){
     capacidad = 0;
     precio_base = 0;
     disponibilidad = false;
+    ocupada = false;
 }
 
 //Establecer parametros
-Habitacion::Habitacion(int num, string tip, int cap, double prec, bool disp){
+Habitacion::Habitacion(int num, string tip, int cap, int prec, bool disp){
     numero = num;
     tipo = tip;
     capacidad = cap;
     precio_base = prec;
     disponibilidad = disp;
+    ocupada = !disp;
 }
 
 //Setters
 void Habitacion::setNumero(int num){
-    numero = num;
+    if (!ocupada){
+        numero = num;
+    }
 }
 
 void Habitacion::setTipo(string tip){
@@ -69,12 +76,19 @@ void Habitacion::setCapacidad(int cap){
     capacidad = cap;
 }
 
-void Habitacion::setPrecio_base(double prec){
+void Habitacion::setPrecio_base(int prec){
     precio_base = prec;
 }
 
 void Habitacion::setDisponibilidad(bool disp){
-    disponibilidad = disp;
+    if (ocupada && disp) {
+        cout << "La habitación ya está ocupada y no puede estar disponible." << endl;
+    } else {
+        disponibilidad = disp;
+    if (disp == false) {
+            ocupada = true; // Marcar la habitación como ocupada si no está disponible
+        }
+    }
 }
 
 //Getters
@@ -90,7 +104,7 @@ int Habitacion::getCapacidad(){
     return capacidad;
 }
 
-double Habitacion::getPrecio_base(){
+int Habitacion::getPrecio_base(){
     return precio_base;
 }
 
@@ -98,18 +112,13 @@ bool Habitacion::getDisponibilidad(){
     return disponibilidad;
 }
 
-//Función de calcular el precio (por el momento solo con el precio base)
-double Habitacion::calculaPrecioTotal() {
-    return precio_base; // Precio base sin ningún extra
+int Habitacion::calculaPrecioTotal(int dias) {
+    return 0;
 }
 
-//Imprimir los datos
-void Habitacion::imprimeDatos(){
-    cout << "Numero: " << numero << endl;
-    cout << "Tipo: " << tipo << endl;
-    cout << "Capacidad: " << capacidad << endl;
-    cout << "Precio base: " << precio_base << endl;
-    cout << "Disponibilidad: " << (disponibilidad ? "Disponible" : "No Disponible") << endl;
+void Habitacion::imprimeDatos() {
+    // No hacer nada
 }
+
 
 #endif
