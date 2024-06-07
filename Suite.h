@@ -5,20 +5,20 @@
 class Suite : public Habitacion{
     //Atributos
     private:
-        double precio_extra;
+        int precio_extra;
     //Metodos    
     public:
         //Constructores
         Suite();
-        Suite(int num, string tip, int cap, double prec, bool disp, double extra);
+        Suite(int num, string tip, int cap, int prec, bool disp, int extra);
 
         //Setters
-        void setPrecioExtra(double);
+        void setPrecioExtra(int);
         //Getters
-        double getPrecioExtra();
+        int getPrecioExtra();
 
         //funcion de calcular precio e imprimir datos y polimorfismo
-        double calculaPrecioTotal() override;
+        int calculaPrecioTotal(int dias) override;
         void imprimeDatos() override;
 };
 
@@ -28,29 +28,34 @@ Suite::Suite() : Habitacion(){
 }
 
 //Establecer parametros de la clase hija al igual que los de la padre
-Suite::Suite(int num, string tip, int cap, double prec, bool disp, double extra) : Habitacion(num, tip, cap, prec, disp){
+Suite::Suite(int num, string tip, int cap, int prec, bool disp, int extra) : Habitacion(num, tip, cap, prec, disp){
     precio_extra = extra;
 }
 
 //Setters
-void Suite::setPrecioExtra(double extra){
+void Suite::setPrecioExtra(int extra){
     precio_extra  = extra;
 }
 
 //Getters
-double Suite::getPrecioExtra(){
+int Suite::getPrecioExtra(){
     return precio_extra;
 }
 
 //Modificar función en la que ahora se hará una suma para saber el precio total
-double Suite::calculaPrecioTotal(){
-    return getPrecio_base() + precio_extra;
+int Suite::calculaPrecioTotal(int dias){
+    return ((getPrecio_base()) * dias) + precio_extra;
 }
 
 //Imprimir Datos
 void Suite::imprimeDatos(){
     Habitacion::imprimeDatos();
-    cout << "Precio extra por ser suite: " <<precio_extra << endl;
-    cout << "Precio total: " << calculaPrecioTotal() << endl;
+    cout << "Tipo de habitacion: " << getTipo() << endl;
+    cout << "Numero de habitacion: " << getNumero() << endl;
+    cout << "Disponibilidad: " << getDisponibilidad() << endl;
+    cout << "Precio extra por ser suite: " << getPrecioExtra() << endl;
+    cout << "Precio total: " << calculaPrecioTotal(1) << endl;
+    cout << "Disponibilidad: " << (getDisponibilidad() ? "Disponible" : "No Disponible") << endl;
 }
+
 #endif
