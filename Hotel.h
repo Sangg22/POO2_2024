@@ -19,7 +19,6 @@ class Hotel{
         //Constructores
         Hotel();
         Hotel(string nom, string ubi);
-        ~Hotel();
         
         //Setters
         void setNombre(string);
