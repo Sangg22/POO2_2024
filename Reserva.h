@@ -12,49 +12,36 @@ using namespace std;
 class Reserva{
     //Atributos privados
     private:
-        string fecha_inicio;
-        string fecha_fin;
+        int dias_estancia;
     //Metodos
     public:
         //Constructores
         Reserva();
-        Reserva(string ini, string fin);
+        Reserva(int dias);
         //Setters
-        void setFechain(string);
-        void setFechafin(string);
+        void setDias(int);
         //Getters
-        string getFechain();
-        string getFechafin();
+        int getDias();
 };
 
 //Inicializar valores
 Reserva::Reserva(){
-    fecha_inicio = "";
-    fecha_fin = "";
+    dias_estancia = 0;
 }
 
 //Establecer valores
-Reserva::Reserva(string ini, string fin){
-    fecha_inicio = ini;
-    fecha_fin = fin;
+Reserva::Reserva(int dias){
+    dias_estancia = dias;
 }
 
 //Setters
-void Reserva::setFechain(string ini){
-    fecha_inicio = ini;
-}
-
-void Reserva::setFechafin(string fin){
-    fecha_fin = fin;
+void Reserva::setDias(int dias){
+    dias_estancia = dias;
 }
 
 //Getters
-string Reserva::getFechain(){
-    return fecha_inicio;
-}
-
-string Reserva::getFechafin(){
-    return fecha_fin;
+int Reserva::getDias(){
+    return dias_estancia;
 }
 
 #endif
