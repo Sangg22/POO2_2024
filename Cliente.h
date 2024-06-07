@@ -72,12 +72,12 @@ void Cliente::imprimirDatos(){
     cout << "CLIENTE:" <<endl;
     cout << "Nombre: " << nombre << endl;
     cout << "Correo: " << correo << endl;
-    cout << "Reservas:" << endl;
-    //Ciclo for que recorre las reservas para imprimir sus datos con getters
-    for(size_t i = 0; i <reservas.size(); i++){
-		cout<<"Fecha de inicio de reserva: " << reservas[i].getFechain() <<endl;
-		cout<<"Fecha de fin de reserva: " << reservas[i].getFechafin() <<endl;
-	}
+    int dias_estancia = 0;
+    for (Reserva& reserva : reservas) {
+        dias_estancia += reserva.getDias(); // Asumiendo que Reserva tiene un método getDiasEstancia()
+    }
+    
+    cout << "Dias de estancia: " << dias_estancia << endl;
 
 }
 
